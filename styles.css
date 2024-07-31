@@ -92,6 +92,11 @@ body
     place-items: center;
 }
 
+.icon-btn:hover
+{
+    background-color: var(--white-alpha-10);
+}
+
 .btn-primary
 {
     background: var(--accents-color);
@@ -119,7 +124,7 @@ body
 
 .logo
 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
 }
 
@@ -299,3 +304,4 @@ body
         height: 150px;
     }
 } */
+
