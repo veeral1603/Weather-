@@ -18,14 +18,14 @@
     --white-alpha-4: rgba(255, 255, 255, 0.04);
 
     --black-alpha-20: rgba(0, 0,0 , 0.3);
-    --accents-color: #CCA5FF;
+    --accents-color: #ffb52b;
 }
 
 
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
-  'wght' 500,
+  'wght' 400,
   'GRAD' 0,
   'opsz' 24
 }
@@ -294,7 +294,8 @@ body
 
 main
 {
-    
+    height: calc(100vh - 100px);
+    height: calc(100svh - 100px);
     overflow: hidden;
 }
 
@@ -359,7 +360,7 @@ article.container
 .current-temperature-value
 {
     font-size: 64px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.1;
     color: var(--values-color);
 }
@@ -448,7 +449,7 @@ article.container
     font-weight: 400;
 }
 
-.card-item p
+.forcast .card-item p
 {
     color: var(--secondary-values-color);
     font-size: 14px;
@@ -527,6 +528,12 @@ article.container
     color: var(--values-color);
     font-weight: 500;
     font-size: 24px;
+}
+
+.highlights-card .highlight-label
+{
+    font-size: 12px;
+    color: var(--secondary-heading-color);
 }
 
 .highlights > .card-lg
@@ -673,5 +680,138 @@ article.container
         padding: 24px;
     }
 
+    .card-sm
+    {
+        display: grid;
+        grid-template-rows: min-content 1fr;
+    }
 
+    .badge
+    {
+        top: 16px;
+        right: 16px;
+    }
+
+    /* header  */
+
+    .header-actions
+    {
+        gap: 24px;
+    }
+
+    .header-actions .btn-primary
+    {
+        padding-inline: 16px 24px;
+    }
+
+    .header-actions .btn-primary .span
+    {
+        display: block;
+        font-size: 16px;
+    }
+
+    /* Main  */
+
+    .title-3
+    {
+        font-size: 16px;
+    }
+
+    article.container 
+    {
+        padding-block-start: 0;
+        grid-template-columns: 300px  minmax(0 , 1fr);
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .content-left
+    {
+        position: sticky;
+        top: 0;
+    }
+
+    .section:not(:last-child)
+    {
+        margin-block: 20px;
+    }
+
+    .current-temperature-value
+    {
+        font-size: 56px;
+    }
+
+    .current-weather-card .wrapper .current-weather-icon
+    {
+        height: 88px;
+    }
+
+    .forecast-card ul .card-item .icon-wrapper img 
+    {
+        height: 38px;
+    }
+
+    .card-item p
+    {
+        font-size: 12px;
+    }
+
+    .forecast-card ul .card-item:not(:last-child)
+    {
+        margin-block-end: 16px;
+    }
+
+    .highlights-list
+    {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .highlights-card:nth-child(-n+2)
+    {
+        grid-column: span 2;
+        height: 160px;
+    }
+
+    .highlights-card:nth-child(n+3)
+    {
+        height: 120px;
+    }
+
+    .highlights-card .material-symbols-outlined
+    {
+        font-size: 48px;
+    }
+
+    .highlights-card.one .card-item
+    {
+        width: 25%;
+        flex-direction: column-reverse;
+        gap: 8px;
+    }
+
+    .highlights-card .highlight-label
+    {
+        font-size: 14px;
+    }
+
+    .highlights-card .highlight-value
+    {
+        font-size: 28px;
+    }
+
+    .slider-container
+    {
+        margin-inline: 0 -24px;
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+    .slider-list::before
+    {
+        display: none;
+    }
+
+    .slider-list::after
+    {
+        min-width: 12px;
+    }
 }
