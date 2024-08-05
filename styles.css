@@ -295,7 +295,7 @@ body
 
 main
 {
-    overflow: hidden;
+    overflow-y: hidden;
 
     
 }
