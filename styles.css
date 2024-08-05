@@ -333,6 +333,7 @@ article.container::before
     height: 40px;
     z-index: 1;
     pointer-events: none;
+    display: none;
     
 }
 
