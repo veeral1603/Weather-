@@ -129,6 +129,11 @@ body
     display: none;
 }
 
+.header
+{
+    position: fixed;
+    top: 0
+}
 
 .logo
 {
