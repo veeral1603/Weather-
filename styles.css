@@ -759,12 +759,12 @@ article.container::before
         align-items: flex-start;
         gap: 24px;
     }
-
+/* 
     .content-left
     {
         position: sticky;
         top: 0;
-    }
+    } */
 
     .section:not(:last-child)
     {
