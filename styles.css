@@ -127,13 +127,7 @@ body
 .header .btn-primary .span
 {
     display: none;
-}
-
-.header
-{
-    position: fixed;
-    top: 0
-}
+}
 
 .logo
 {
@@ -301,7 +295,8 @@ body
 
 main
 {
-    height: calc(100dvh - 80px);
+    overflow: hidden;
+
     
 }
 
