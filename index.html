@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script defer src="app.js"></script>
+    <script defer type="module" src="app.js"></script>
 </head>
 <body>
     
@@ -24,15 +24,15 @@
         <div class="search-view">
 
             <div class="search-wrapper">
-                <input type="search" class="search-field"  name="search" placeholder="Search City...">
+                <input type="search" class="search-field"  name="search" placeholder="Search City..." autocomplete="off">
 
                 <span class="material-symbols-outlined leading-icon-s">search</span>
 
-                <button class="icon-btn leading-icon hover-effect"><span class="material-symbols-outlined">arrow_back</span></button>
+                <button class="icon-btn leading-icon hover-effect" data-search-back><span class="material-symbols-outlined">arrow_back</span></button>
             </div>
 
             <div class="search-result">
-                 <ul class="view-list">
+                 <!-- <ul class="view-list" data-search-list>
 
                     <li class="view-item hover-effect">
                         
@@ -47,16 +47,15 @@
 
                     </li>
 
-                    
 
-                </ul>
+                </ul> -->
             </div>
                 
         </div>
 
         <div class="header-actions">
-            <button class="icon-btn has-state">
-                <span class="material-symbols-outlined">search</span>
+            <button class="icon-btn has-state " data-search-view>
+                <span class="material-symbols-outlined" >search</span>
             </button>
 
             <button class="mode-btn">

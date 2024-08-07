@@ -203,7 +203,7 @@ body
     border-radius: 50%;
     border-block-start-color: transparent;
     animation: loading 500ms linear infinite;
-
+    z-index: 2;
     display: none;
 
     
