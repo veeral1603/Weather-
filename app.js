@@ -36,9 +36,11 @@ btnSearchBack.addEventListener('click' , ()=> {
 // Search API Integration
 
 let searchTimeOut = null;
-let searchTimeOutDuration = 1000;
+let searchTimeOutDuration = 1500;
 
 searchField.addEventListener("input" , function(){
+
+    searchTimeOut ?? clearTimeout(searchTimeOut);
 
     if(!searchField.value){
         searchResult.classList.remove("active");
@@ -50,13 +52,19 @@ searchField.addEventListener("input" , function(){
         searchField.classList.add("searching");
     }
 
-    if(searchField.value)
-    {
+    if(searchField.value){
+
         searchTimeOut= setTimeout(() => {
+
+            if (!searchField.value) return;
+            
             fetchData(url.geo(searchField.value) , function(locations){
+
                 searchField.classList.remove("searching");
                 searchResult.classList.add("active");
 
+                console.log(locations);
+                
 
                 const resultMarkup = `<ul class="view-list" data-search-list></ul>`;
                 

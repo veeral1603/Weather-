@@ -6,13 +6,12 @@ export const fetchData = async function(URL , callback){
     if (res.status !== 200)
     {
         throw new Error(); 
-        return;
     }
     const data = await res.json();
     callback(data);
     } 
     catch (err){
-        console.log(`Error ${err}`);
+        console.log(`${err}`);
     }
 
 }
