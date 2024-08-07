@@ -28,6 +28,8 @@ btnSearch.addEventListener('click' , () =>{
 
 btnSearchBack.addEventListener('click' , ()=> {
     document.querySelector('.search-view').classList.toggle("active");
+    searchField.value = '';
+    searchResult.innerHTML = '';
 })
 
 
