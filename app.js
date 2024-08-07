@@ -61,10 +61,7 @@ searchField.addEventListener("input" , function(){
             fetchData(url.geo(searchField.value) , function(locations){
 
                 searchField.classList.remove("searching");
-                searchResult.classList.add("active");
-
-                console.log(locations);
-                
+                searchResult.classList.add("active");                
 
                 const resultMarkup = `<ul class="view-list" data-search-list></ul>`;
                 
