@@ -29,6 +29,7 @@ const  checkHash = function(){
     const [route , query] = requestUrl.includes("?") ? requestUrl.split("?") : requestUrl;
     
     routes.get(route) ? routes.get(route)(query) : error404();
+    
 }
 
 window.addEventListener("hashchange", checkHash);

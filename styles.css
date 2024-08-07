@@ -681,7 +681,7 @@ article.container::before
 /* Loading  */
 
 
-.loading
+.loading-container
 {
     position: absolute;
     top: 0;
@@ -689,17 +689,23 @@ article.container::before
     height: 100%;
     width: 100%;
     background-color: var(--background);
-    display: grid;
+    display: none;
     place-items: center;
+    /* display: grid ; */
     z-index: 1;
 }
 
-.loading::before
+
+.loading-container::before
 {
     content: "";
     width: 48px;
     height: 48px;
     border: 4px solid var(--primary-heading-color);
+    border-block-start-color: transparent;
+    border-radius: 50%;
+    animation: loading 500ms linear infinite;
+    
 }
 
 
@@ -973,7 +979,7 @@ article.container::before
 
     .search-view .view-list:empty
     {
-        min-height: 120px;
+        min-height: 60px;
     }
 
     .search-view .view-item::-webkit-scrollbar-button

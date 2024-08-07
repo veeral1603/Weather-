@@ -46,7 +46,9 @@
 
                             <a href="#" class="item-link has-state "></a>
 
-                    </li>
+                    </li> 
+
+                     <li class="city-not-found view-item">No such city found!</li>
 
 
                 </ul> -->
@@ -63,7 +65,7 @@
                 <span class="material-symbols-outlined">light_mode</span>
             </button>
             
-            <a href="#" class="btn-primary has-state">
+            <a href="#" class="btn-primary has-state" data-current-location>
                 <span class="material-symbols-outlined">my_location</span>
                 
                 <span class="span">Current Location</span>
@@ -76,7 +78,7 @@
 
 
 <main>
-    <article class="container">
+    <article class="container" data-container>
 
         <div class="content-left"> 
 
@@ -494,7 +496,14 @@
         
         
     </article>
+
+    <div class="loading-container" id="loading-container">
+        
+    </div>
+
 </main>
+
+
 
 </body>
 </html>
