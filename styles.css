@@ -11,15 +11,19 @@
     --secondary-values-color: rgb(139, 139, 139);
     --primary-icons-color: rgb(247, 244, 244);
 
+    --surface: rgb(49, 48, 48);
+
     --on-accents-color: #333;
 
     --white-alpha-10: rgba(255, 255, 255, 0.1);
     --white-alpha-8: rgba(255, 255, 255, 0.08);
+    --white-alpha-6: rgba(255, 255, 255, 0.06);
     --white-alpha-4: rgba(255, 255, 255, 0.04);
 
     --black-alpha-20: rgba(0, 0,0 , 0.3);
-    --accents-color: #ffb52b;
+    --accents-color: #ff75a3;
 }
+
 
 
 .material-symbols-outlined {
@@ -76,6 +80,7 @@ body
     background-color: var(--background);
     height: 100vh;
     color: var(--primary-heading-color);
+    
 }
 
 .container
@@ -134,6 +139,7 @@ body
 {
     font-size: 24px;
     font-weight: 700;
+    color: var(--logo-color);
 }
 
 .header .container , .header-actions
@@ -297,6 +303,7 @@ body
 main
 {
     height: calc(100dvh - 80px);
+    overflow: hidden;
     
 }
 
@@ -307,10 +314,11 @@ article.container
     display: grid;
     grid-template-columns: minmax(0 , 1fr);
     gap: 20px;
-    height: calc(100% - 16px);
+    height: 100%;
     overflow-y: auto;
     overflow-y: overlay;
-    padding-block-end: 0;
+    padding-block: 0;
+    
 }
 
 article.container::-webkit-scrollbar-thumb {background-color: transparent;}
@@ -475,7 +483,7 @@ article.container::before
     font-weight: 400;
 }
 
-.forcast .card-item p
+.forecast .card-item p
 {
     color: var(--secondary-values-color);
     font-size: 14px;
@@ -636,6 +644,7 @@ article.container::before
     gap: 12px;
     flex-direction: column;
     margin-block-start: 24px;
+    
 }
 
 .footer, .footer .footer-text:last-child
@@ -915,8 +924,16 @@ article.container::before
 
     .search-field , .search-view .view-list
     {
-        background-color: var(--white-alpha-10);
+        background-color: var(--white-alpha-6);
+        backdrop-filter: blur(12px);
+        
     }
+    .search-view .view-list
+    {
+        box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 15px;
+    }
+
+
 
     .search-field
     {
@@ -937,8 +954,8 @@ article.container::before
 
     .search-view:has(.search-result.active):focus-within .search-field
     {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
 
     .search-view .view-list
@@ -949,7 +966,7 @@ article.container::before
         width: 100%;
         max-height: 360px;
         border-radius: 0 0 28px 28px;
-        border-block-start: 1px solid var(--secondary-heading-color);
+        border-block-start: 1px solid var(--surface);
         overflow-y: auto;
         overflow-y: overlay;
     }
@@ -970,5 +987,126 @@ article.container::before
     {
         grid-template-columns: 360px minmax(0 , 1fr);
         gap: 40px;
+    }
+
+    .current-temperature-value
+    {
+        font-size: 64px;
+    }
+
+    .current-weather-card .wrapper .current-weather-icon
+    {
+        height: 104px;
+    }
+
+    .current-weather-card .meta-list .meta-item p 
+    {
+        font-size: 14px;
+    }
+
+    .forecast-card ul .card-item .icon-wrapper img 
+    {
+        height: 48px;
+    }
+
+    .card-item .icon-wrapper .forecast-temp-value
+    {
+        font-size: 20px;
+    }
+
+    .badge
+    {
+        font-size: 18px;
+        top: 24px;
+        right: 24px;
+    }
+
+    .highlights-card:nth-child(-n+2)
+    {
+        height: 200px;
+    }
+
+    .highlights-card:nth-child(n+3)
+    {
+        height: 150px;
+    }
+
+    .highlights-card .material-symbols-outlined
+    {
+        font-size: 52px;
+    }
+
+    .highlights-card .highlight-value 
+    {
+        font-size: 30px;
+    }
+
+    .highlights-card .highlight-label 
+    {
+        font-size: 16px;
+    }
+
+    .highlights-card.two .card-item
+    {
+        gap: 8px 24px;
+    }
+
+    .slider-list
+    {
+        gap: 24px;
+    }
+}
+
+@media (min-width: 1440px) {
+    
+
+    .title-2 
+    {
+        font-size: 20px;
+    }
+    article.container 
+    {
+        grid-template-columns: 380px minmax(0, 1fr);
+    }
+
+    .current-temperature-value
+    {
+        font-size: 64px;
+    }
+
+    .current-weather-card .wrapper .current-weather-icon
+    {
+        height: 116px;
+    }
+
+    .highlights-list
+    {
+        grid-template-columns: repeat(4 , 1fr);
+    }
+
+    .highlights-card .material-symbols-outlined
+    {
+        font-size: 56px;
+    }
+
+    .highlights-card .highlight-value 
+    {
+        font-size: 38px;
+    }
+
+    .hourly-forecast .weather-icon
+    {
+        height: 56px;
+        margin-block: 24px;
+    }
+
+    .slider-container .card-sm
+    {
+        padding: 16px 12px;
+    }
+
+    .logo
+    {
+        font-size: 30px;
     }
 }

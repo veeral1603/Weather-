@@ -12,6 +12,7 @@ const header = document.querySelector("header");
 main.style.height = `calc(100dvh - ${header.offsetHeight}px)`;   //Setting the height of main element
 
 
+
 // Event Listeners
 
 btnSearch.addEventListener('click' , () =>{
@@ -21,3 +22,5 @@ btnSearch.addEventListener('click' , () =>{
 btnBack.addEventListener('click' , ()=> {
     document.querySelector('.search-view').classList.toggle("active");
 })
+
+
