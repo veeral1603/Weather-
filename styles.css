@@ -689,9 +689,9 @@ article.container::before
     height: 100%;
     width: 100%;
     background-color: var(--background);
-    display: none;
+    /* display: none; */
     place-items: center;
-    /* display: grid ; */
+    display: grid ; 
     z-index: 1;
 }
 
