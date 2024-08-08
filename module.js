@@ -1,6 +1,6 @@
 'use stict' ;
 
-export const weekDayNames = ["Monday" , "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+export const weekDayNames = ["Sunday", "Monday" , "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 export const monthNames = ["Jan" , "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -16,7 +16,7 @@ export const getDate = function(dateUnix, timeZone){
     const weekDayName = weekDayNames[date.getUTCDay()];
     const monthName = monthNames[date.getUTCMonth()];
 
-    return `${weekDayName} ${date.getUTCDate}, ${monthName}`;
+    return `${weekDayName} ${date.getUTCDate()}, ${monthName}`;
 }
 
 

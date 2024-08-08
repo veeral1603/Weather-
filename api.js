@@ -18,7 +18,7 @@ export const fetchData = async function(URL , callback){
 
 export const url = {
     currentWeather(lat , lon){
-        return `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric`;
+        return `https://api.openweathermap.org/data/2.5/weather?${lat}&${lon}&units=metric`;
     },
 
     forecast(lat , lon){
@@ -26,11 +26,11 @@ export const url = {
     },
 
     airPollution(lat , lon){
-        return `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}`;
+        return `http://api.openweathermap.org/data/2.5/air_pollution?${lat}&${lon}`;
     },
 
     reverseGeo(lat , lon){
-        return `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5`;
+        return `http://api.openweathermap.org/geo/1.0/reverse?${lat}&${lon}&limit=5`;
     },
 
     geo(query){

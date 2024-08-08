@@ -36,7 +36,7 @@ window.addEventListener("hashchange", checkHash);
 
 window.addEventListener("load" , function(){
     if (!this.window.location.hash){
-        window.location.hash = "#/current-location";
+        window.location.hash = defaultLocation;
     }
     else 
     {
