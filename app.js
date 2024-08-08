@@ -24,6 +24,7 @@ const container = document.querySelector("[data-container]");
 const loadingContainer = document.querySelector("#loading-container");
 const searchResult = document.querySelector(".search-result");
 const currentWeatherContainer = document.querySelector("[data-current-weather");
+const highlightsContainer = document.querySelector("[data-highlights-container");
 
 
 main.style.height = `calc(100dvh - ${header.offsetHeight}px)`;   //Setting the height of main element
@@ -137,15 +138,14 @@ searchResult.addEventListener("click" , (e)=> {
 })
 
 
-// Current Weather
+
 
 export const updateWeather = function(lat , lon){
 
    startLoading();
    
-
+    // Current Weather
     fetchData(url.currentWeather(lat , lon) , function(location) {
-        console.log(location);
         
         const { weather , 
                 dt: dateUnix,
@@ -155,8 +155,6 @@ export const updateWeather = function(lat , lon){
                 timezone } = location;
                 
         const [{description , icon}] = weather;
-
-        // console.log(description , icon, dateUnix , sunsetUnixUTC , sunriseUnixUTC, temp , pressure , humidity , feels_like , visibility , timezone);
 
         currentWeatherContainer.innerHTML = '';
 
@@ -193,14 +191,152 @@ export const updateWeather = function(lat , lon){
             const [{state , country}] = info;
             const currentWeatherLocation = document.querySelector("[data-meta-location]");
             currentWeatherLocation.innerHTML = `${state || ""}${state ? "," : ""} ${country}`;
-            stopLoading();
+            
         });
 
 
 
         currentWeatherContainer.append(card);
 
-});
+    });
+
+    // highlights
+    fetchData(url.currentWeather(lat, lon) , function(location){
+        const { 
+            dt: dateUnix,
+            sys : {sunrise: sunriseUnixUTC , sunset: sunsetUnixUTC},
+            main : {pressure, humidity, feels_like},
+            visibility,
+            timezone } = location;
+
+
+
+        fetchData(url.airPollution(lat, lon), function(pollution){
+            console.log(pollution);
+        }) ;
+
+        highlightsContainer.innerHTML = '';
+        const card = document.createElement("div");
+        card.classList.add("card", "card-lg");
+
+        card.innerHTML = `
+        <h2 class="title-2">Today's Highlights</h2>
+
+                    <div class="highlights-list">
+
+                        <div class="card card-sm highlights-card one">
+                            <h3 class="title-3">Air Quality</h3>
+
+                            <div class="wrapper">
+                                <span class="material-symbols-outlined">air</span>
+
+                                <ul class="card-list">
+
+                                    <li class="card-item">
+                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-label">PM2.5</p>
+                                    </li>
+
+                                    <li class="card-item">
+                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-label">SO2</p>
+                                    </li>
+
+                                    <li class="card-item">
+                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-label">NO2</p>
+                                    </li>
+
+                                    <li class="card-item">
+                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-label">O3</p>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+
+                            <span class="badge aqi-badge aqi-1">Good</span>
+                            
+
+                        </div>
+
+                        <div class="card card-sm highlights-card two">
+                            <h3 class="title-3">Sunrise & Sunset</h3>
+
+                            <div class="card-list">
+                                <div class="card-item">
+                                    <span class="material-symbols-outlined">clear_day</span>
+
+                                    <div>
+                                        <p class="highlight-label">Sunrise</p>
+                                        <p class="highlight-value">${module.getTime(sunriseUnixUTC , timezone)}</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-item">
+                                    <span class="material-symbols-outlined">clear_night</span>
+
+                                    <div>
+                                        <p class="highlight-label">Sunset</p>
+                                        <p class="highlight-value">${module.getTime(sunsetUnixUTC , timezone)}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="card card-sm highlights-card three">
+                            <h3 class="title-3">Humidity</h3>
+
+                            <div class="wrapper">
+                                <span class="material-symbols-outlined">humidity_percentage</span>
+
+                                <p class="highlight-value">${humidity}%</p>
+                            </div>
+                        </div>
+
+                        <div class="card card-sm highlights-card four">
+                            <h3 class="title-3">Pressure</h3>
+
+                            <div class="wrapper">
+                                <span class="material-symbols-outlined">airwave</span>
+
+                                <p class="highlight-value">${pressure} hPa</p>
+                            </div>
+                        </div>
+
+                        <div class="card card-sm highlights-card five">
+                            <h3 class="title-3">Visibility</h3>
+
+                            <div class="wrapper">
+                                <span class="material-symbols-outlined">visibility</span>
+
+                                <p class="highlight-value">${visibility/1000}km</p>
+                            </div>
+                        </div>
+
+                        <div class="card card-sm highlights-card six">
+                            <h3 class="title-3">Feels Like</h3>
+
+                            <div class="wrapper">
+                                <span class="material-symbols-outlined">thermostat</span>
+
+                                <p class="highlight-value">${Math.round(feels_like)}°C</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+        `;
+
+        highlightsContainer.append(card);
+
+        setTimeout(stopLoading , 1500);
+    });
            
 }
 

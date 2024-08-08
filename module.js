@@ -25,8 +25,7 @@ export const getTime = function ( dateUnix, timeZone){
     const hours = date.getUTCHours();
     const minutes = date.getUTCMinutes();
     const period = hours > 12 ? "PM" : "AM";
-
-    return `${hours % 12 || 12}:${minutes} ${period}`;
+    return `${hours % 12 || 12}:${String(minutes).length === 2 ? minutes : "0" + minutes} ${period}`;
 }
 
 export const getHours = function ( dateUnix, timeZone){
