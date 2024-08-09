@@ -11,7 +11,7 @@ export const fetchData = async function(URL , callback){
     callback(data);
     } 
     catch (err){
-        console.log(`${err}`);
+        console.error(`${err}`);
     }
 
 }
@@ -22,7 +22,7 @@ export const url = {
     },
 
     forecast(lat , lon){
-        return `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric`;
+        return `https://api.openweathermap.org/data/2.5/forecast?${lat}&${lon}&units=metric`;
     },
 
     airPollution(lat , lon){

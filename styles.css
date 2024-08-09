@@ -21,7 +21,7 @@
     --white-alpha-4: rgba(255, 255, 255, 0.04);
 
     --black-alpha-20: rgba(0, 0,0 , 0.3);
-    --accents-color: #ff75a3;
+    --accents-color: #eff780;
 }
 
 
@@ -121,7 +121,7 @@ body
     color: var(--on-accents-color);
     border-radius: 30px;
 
-    display: none;
+
 }
 
 .btn-primary .span 
@@ -561,7 +561,7 @@ article.container::before
 }
 .aqi-5
 {
-    background-color: rgb(72, 19, 126);
+    background-color: rgb(94, 25, 163);
     color: white;
 }
 
@@ -715,9 +715,9 @@ article.container::before
     height: 100%;
     width: 100%;
     background-color: var(--background);
-    /* display: none; */
+    display: none;
     place-items: center;
-    display: grid ; 
+    /* display: grid ;  */
     z-index: 1;
 }
 

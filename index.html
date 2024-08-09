@@ -20,7 +20,7 @@
 
     <div class="container">
         
-        <a href="#" class="logo">Weatherly</a>
+        <a href="#/weather?lat=28.7041&lon=77.1025" class="logo">Weatherly</a>
 
         <div class="search-view">
 
@@ -65,7 +65,7 @@
                 <span class="material-symbols-outlined">light_mode</span>
             </button>
             
-            <a href="#" class="btn-primary has-state" data-current-location>
+            <a href="#/current-location" class="btn-primary has-state" data-current-location>
                 <span class="material-symbols-outlined">my_location</span>
                 
                 <span class="span">Current Location</span>
@@ -115,12 +115,12 @@
 
             <!-- Forecast -->
 
-            <section class="section forecast">
-                <h2 class="title-2">5 Day Forecast</h2>
+            <section class="section forecast" data-day-forecast>
+                <!-- <h2 class="title-2">5 Day Forecast</h2>
 
                 <div class="card card-lg forecast-card">
 
-                    <ul>
+                    <ul data-forecast>
 
                         <li class="card-item">
                             <div class="icon-wrapper">
@@ -174,7 +174,7 @@
 
                     </ul>
 
-                </div>
+                </div> -->
             </section>
 
         </div>
@@ -303,9 +303,9 @@
 
             <!-- Hourly Forecasst -->
 
-            <section class="section hourly-forecast">
+            <section class="section hourly-forecast" data-hourly-forecast>
 
-                <h2 class="title-2">Today At</h2>
+                <!-- <h2 class="title-2">Today At</h2>
 
                 <div class="slider-container">
 
@@ -477,7 +477,7 @@
 
                     </ul>
 
-                </div>
+                </div> -->
 
             </section>
 

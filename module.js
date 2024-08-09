@@ -33,7 +33,7 @@ export const getHours = function ( dateUnix, timeZone){
     const hours = date.getUTCHours();
     const period = hours > 12 ? "PM" : "AM";
 
-    return `${hours % 12 || 12}:${minutes} ${period}`;
+    return `${hours % 12 || 12}${period}`;
 }
 
 export const mps_To_kmh = mps => {

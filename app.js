@@ -25,6 +25,8 @@ const loadingContainer = document.querySelector("#loading-container");
 const searchResult = document.querySelector(".search-result");
 const currentWeatherContainer = document.querySelector("[data-current-weather");
 const highlightsContainer = document.querySelector("[data-highlights-container");
+const hourlyForecastContainer = document.querySelector("[data-hourly-forecast");
+const dayForecastContainer = document.querySelector("[data-day-forecast]");
 
 
 main.style.height = `calc(100dvh - ${header.offsetHeight}px)`;   //Setting the height of main element
@@ -200,7 +202,7 @@ export const updateWeather = function(lat , lon){
 
     });
 
-    // highlights
+    // Today's highlights
     fetchData(url.currentWeather(lat, lon) , function(location){
         const { 
             dt: dateUnix,
@@ -212,7 +214,6 @@ export const updateWeather = function(lat , lon){
 
 
         fetchData(url.airPollution(lat, lon), function(pollution){
-            console.log(pollution);
 
             const [{components: {pm2_5, so2, no2, o3}, dt: dateUnixPoll, main: {aqi }}] = pollution.list;
 
@@ -335,7 +336,6 @@ export const updateWeather = function(lat , lon){
         `;
 
         highlightsContainer.append(card);
-        setTimeout(stopLoading , 1500);
             
         }) ;
 
@@ -343,9 +343,118 @@ export const updateWeather = function(lat , lon){
 
         
     });
+
+    // 24 hour forecast
+    fetchData(url.forecast(lat,lon) , function(location){
+
+
+        const {city: {timezone} ,list: forecastList} = location;
+
+        hourlyForecastContainer.innerHTML = `
+                <h2 class="title-2">Today At</h2>
+
+                <div class="slider-container">
+
+                    <ul class="slider-list" data-temp>
+
+                    </ul>
+
+                    <ul class="slider-list" data-wind>
+
+                    </ul>
+
+                </div>
+        `;
+
+        for (const [index , data] of forecastList.entries()){
+
+            if(index > 7) break;
+
+            const { dt : dateTimeUnix,
+                    main : { temp },
+                    weather,
+                    wind : {deg: windDirection , speed: windSpeed}
+            } = data;
+
+            const [{icon , description}] = weather;
+
+            const tempLi = document.createElement("li");
+            tempLi.classList.add("slider-item");
+
+            tempLi.innerHTML = `
+                <div class="card card-sm slider-card">
+                    <p class="slider-card-time">${module.getHours(dateTimeUnix , timezone)}</p>
+
+                    <img src="Assets/Weather Icons/${icon}.png" class="weather-icon" title="${description}">
+
+                    <p class="slider-card-value">${Math.round(temp)}°C</p>
+                </div>
+            `;
+
+            const windLi = document.createElement("li");
+            windLi.classList.add("slider-item");
+
+            windLi.innerHTML = `
+                <div class="card card-sm slider-card">
+                    <p class="slider-card-time">${module.getHours(dateTimeUnix, timezone)}</p>
+
+                    <img src="Assets/Direction2.png" class="weather-icon" style="transform: rotate(${windDirection-180}deg)">
+
+                    <p class="slider-card-value">${Math.round(module.mps_To_kmh(windSpeed))} km/h</p>
+                </div>
+            `;
+
+            hourlyForecastContainer.querySelector("[data-temp]").append(tempLi);
+            hourlyForecastContainer.querySelector("[data-wind]").append(windLi);
+        }
+
+        // 5 day forecast section
+
+        dayForecastContainer.innerHTML = `
+            <h2 class="title-2">5 Day Forecast</h2>
+
+            <div class="card card-lg forecast-card">
+
+                <ul data-forecast>
+
+
+                </ul>
+
+            </div>
+        `;
+
+        for (let i = 7 , len = forecastList.length ; i  < len ; i += 8){
+
+            const { main : {temp_max},
+                    weather,
+                    dt_txt} = forecastList[i];
+
+            const [{icon , description}] = weather;
+
+            const date = new Date(dt_txt);
+            
+            const li = document.createElement("li");
+            li.classList.add("card-item");
+
+            li.innerHTML = `
+                <div class="icon-wrapper">
+                    <img src="Assets/Weather Icons/${icon}.png" title="${description}">
+                    <span class="span forecast-temp-value">${Math.round(temp_max)}°C</span>
+                </div>
+
+                <p class="forecast-date">${date.getUTCDate()} ${module.monthNames[date.getUTCMonth()]}</p>
+                <p class="forecast-da">${module.weekDayNames[date.getUTCDay()].slice(0 , 3)}</p>
+            `;
+
+            dayForecastContainer.querySelector("[data-forecast]").append(li);
+
+
+        }
+
+        setTimeout(stopLoading , 1500);
+    });
            
 }
-
 
 
 
