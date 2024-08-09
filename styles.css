@@ -525,7 +525,7 @@ article.container::before
 .highlights-card .card-item
 {
     width: 50%;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 4px;
 }
 
@@ -534,9 +534,35 @@ article.container::before
     position: absolute;
     top: 10px;
     right: 16px;
-    padding: 2px 12px;
+    padding: 4px 12px;
     border-radius: 20px;
    
+}
+
+.aqi-1
+{
+    background-color: rgb(98, 255, 98);
+    color: black;
+}
+.aqi-2
+{
+    background-color: rgb(241, 239, 99);
+    color: black;
+}
+.aqi-3
+{
+    background-color: rgb(253, 144, 1);
+    color: black;
+}
+.aqi-4
+{
+    background-color: rgba(252, 52, 52, 0.993);
+    color: white;
+}
+.aqi-5
+{
+    background-color: rgb(72, 19, 126);
+    color: white;
 }
 
 .highlights-card.two .card-item

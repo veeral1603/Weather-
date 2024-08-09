@@ -213,9 +213,10 @@ export const updateWeather = function(lat , lon){
 
         fetchData(url.airPollution(lat, lon), function(pollution){
             console.log(pollution);
-        }) ;
 
-        highlightsContainer.innerHTML = '';
+            const [{components: {pm2_5, so2, no2, o3}, dt: dateUnixPoll, main: {aqi }}] = pollution.list;
+
+            highlightsContainer.innerHTML = '';
         const card = document.createElement("div");
         card.classList.add("card", "card-lg");
 
@@ -233,22 +234,22 @@ export const updateWeather = function(lat , lon){
                                 <ul class="card-list">
 
                                     <li class="card-item">
-                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-value">${pm2_5.toFixed(1)}</p>
                                         <p class="highlight-label">PM2.5</p>
                                     </li>
 
                                     <li class="card-item">
-                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-value">${so2.toFixed(1)}</p>
                                         <p class="highlight-label">SO2</p>
                                     </li>
 
                                     <li class="card-item">
-                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-value">${no2.toFixed(1)}</p>
                                         <p class="highlight-label">NO2</p>
                                     </li>
 
                                     <li class="card-item">
-                                        <p class="highlight-value">23.3</p>
+                                        <p class="highlight-value">${o3.toFixed(1)}</p>
                                         <p class="highlight-label">O3</p>
                                     </li>
                                 </ul>
@@ -256,7 +257,7 @@ export const updateWeather = function(lat , lon){
 
                             </div>
 
-                            <span class="badge aqi-badge aqi-1">Good</span>
+                            <span class="badge aqi-badge aqi-${aqi}">${module.aqiText[aqi].level}</span>
                             
 
                         </div>
@@ -334,8 +335,13 @@ export const updateWeather = function(lat , lon){
         `;
 
         highlightsContainer.append(card);
-
         setTimeout(stopLoading , 1500);
+            
+        }) ;
+
+        
+
+        
     });
            
 }
