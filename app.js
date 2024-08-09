@@ -9,13 +9,14 @@ import * as module from './module.js';
 const btnSearch = document.querySelector('[data-search-view]');
 const btnSearchBack = document.querySelector("[data-search-back]");
 const btnCurrentLocation = document.querySelector("[data-current-location");
+const btnModeSwitch = document.querySelector("[data-mode-switch]");
 
 // Selecting Search Field 
 const searchField = document.querySelector(".search-field");
 
 // Selecting Value Labels
 
-
+let darkMode = true;
 
 // Selecting Containers 
 const main = document.querySelector("main");
@@ -34,6 +35,8 @@ main.style.height = `calc(100dvh - ${header.offsetHeight}px)`;   //Setting the h
 // Setting up loading container 
 loadingContainer.style.height = `calc(100dvh - ${header.offsetHeight}px)`; 
 loadingContainer.style.top = `${header.offsetHeight}px`;
+
+
 
 
 // Search Toggle
@@ -457,6 +460,23 @@ export const updateWeather = function(lat , lon){
 }
 
 
+// Mode Switch 
+
+const modeSwitch = function(){
+    document.querySelector("body").classList.toggle("light-mode");
+    
+    if(darkMode) {
+        btnModeSwitch.querySelector("span").innerHTML = "dark_mode";
+        
+    }
+
+    else {
+        btnModeSwitch.querySelector("span").innerHTML = "light_mode";
+    }
+    darkMode = !darkMode;
+}
+
+btnModeSwitch.addEventListener("click" , modeSwitch);
 
 
 

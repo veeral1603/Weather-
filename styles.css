@@ -12,6 +12,7 @@
     --primary-icons-color: rgb(247, 244, 244);
 
     --surface: rgb(49, 48, 48);
+    --search-border: rgb(49, 48, 48);
 
     --on-accents-color: #333;
 
@@ -24,7 +25,26 @@
     --accents-color: #eff780;
 }
 
+.light-mode 
+{
+    --background: #EDEDED;
+    --logo-color: #222222;
+    --primary-heading-color: rgb(17, 17, 17);
+    --secondary-heading-color: rgb(46, 46, 46);
+    --values-color: rgb(0, 0, 0);
+    --secondary-values-color: rgb(20, 20, 20);
+    --primary-icons-color: #333;
+    --white-alpha-8:  rgba(0, 0, 0, 0.048);
+    --black-alpha-20: #ededed;
 
+    --search-border: rgba(0, 0, 0, 0.048);
+    --accents-color: #7f51ff;
+}
+
+.search-field-light
+{
+    border: 1px solid var(--search-border);
+}
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -233,6 +253,7 @@ body
     color: var(--primary-heading-color);
     outline: none;
     font-weight: 600;
+    
 }
 
 
@@ -756,6 +777,15 @@ article.container::before
         padding: 24px;
     }
 
+    .card-lg 
+    {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.2) 0px 8px 16px -8px;
+    }
+
+    .slider-container .card-sm
+    {
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    }
     .card-sm
     {
         display: grid;
@@ -848,6 +878,10 @@ article.container::before
         height: 160px;
     }
 
+    /* .highlights-card
+    {
+        
+    } */
     .highlights-card:nth-child(n+3)
     {
         height: 120px;
@@ -880,6 +914,8 @@ article.container::before
         margin-inline: 0 -24px;
         border-top-left-radius: 16px;
         border-bottom-left-radius: 16px;
+        
+        padding: 10px;
     }
     .slider-list::before
     {
@@ -998,7 +1034,7 @@ article.container::before
         width: 100%;
         max-height: 360px;
         border-radius: 0 0 28px 28px;
-        border-block-start: 1px solid var(--surface);
+        border-block-start: 1px solid var(--search-border);
         overflow-y: auto;
         overflow-y: overlay;
     }
