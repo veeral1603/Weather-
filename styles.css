@@ -24,7 +24,7 @@
     --black-alpha-20: rgba(0, 0,0 , 0.3);
     --icon-hover: rgba(255, 255, 255, 0.1);
     --accents-color: #cc7efa;
-    --ripple-effect: rgba(255, 255, 255, 0.7);
+    --ripple-effect: rgba(255, 255, 255, 0.5);
 }
 
 .light-mode 
