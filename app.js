@@ -8,7 +8,6 @@ import * as module from './module.js';
 // Selecting Buttons 
 const btnSearch = document.querySelector('[data-search-view]');
 const btnSearchBack = document.querySelector("[data-search-back]");
-const btnCurrentLocation = document.querySelector("[data-current-location");
 const btnModeSwitch = document.querySelector("[data-mode-switch]");
 const btnHome = document.querySelector(".error-home-btn");
 // Selecting Search Field 
@@ -17,6 +16,7 @@ const searchField = document.querySelector(".search-field");
 
 // Dark Mode State 
 let darkMode = true;
+
 
 
 // Selecting Containers 
@@ -63,6 +63,8 @@ const stopLoading = function (){
     loadingContainer.style.display = "none";
     container.style.overflowY = "overlay";
 }
+
+
 
 // Search API Integration
 
