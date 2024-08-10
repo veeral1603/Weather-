@@ -10,7 +10,7 @@ const btnSearch = document.querySelector('[data-search-view]');
 const btnSearchBack = document.querySelector("[data-search-back]");
 const btnCurrentLocation = document.querySelector("[data-current-location");
 const btnModeSwitch = document.querySelector("[data-mode-switch]");
-
+const btnHome = document.querySelector(".error-home-btn");
 // Selecting Search Field 
 const searchField = document.querySelector(".search-field");
 
@@ -29,6 +29,7 @@ const currentWeatherContainer = document.querySelector("[data-current-weather");
 const highlightsContainer = document.querySelector("[data-highlights-container");
 const hourlyForecastContainer = document.querySelector("[data-hourly-forecast");
 const dayForecastContainer = document.querySelector("[data-day-forecast]");
+const errorContainer = document.querySelector("[data-error]");
 
 
 main.style.height = `calc(100dvh - ${header.offsetHeight}px)`;   //Setting the height of main element
@@ -147,6 +148,8 @@ searchResult.addEventListener("click" , (e)=> {
 
 
 export const updateWeather = function(lat , lon){
+
+    errorContainer.style.display = "none";
 
    startLoading();
    
@@ -508,9 +511,15 @@ document.querySelectorAll('.ripple').forEach(button => {
 
 
 
+// Error 404 Handling 
 
+
+btnHome.addEventListener("click" , () => {
+    window.location.hash = route.defaultLocation;
+    
+});
 
 export const error404 = function(){
-    console.log("error404");
+    errorContainer.style.display = "flex";
 }
 

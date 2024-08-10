@@ -2,7 +2,7 @@
 
 import {updateWeather , error404} from './app.js'
 
-const defaultLocation = "#/weather?lat=28.7041&lon=77.1025";  //New Delhi
+export const defaultLocation = "#/weather?lat=28.7041&lon=77.1025";  //New Delhi
 
 
 const currentLocation = function(){
