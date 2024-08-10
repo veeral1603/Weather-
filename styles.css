@@ -792,7 +792,10 @@ article.container::before
 /* Smaller Than 768px  */
 @media (max-width: 767px){
 
-    .view-item
+::-webkit-scrollbar {
+    width: 10px;
+}  
+   .view-item
     {
         overflow: hidden;
     }
