@@ -14,9 +14,10 @@ const btnModeSwitch = document.querySelector("[data-mode-switch]");
 // Selecting Search Field 
 const searchField = document.querySelector(".search-field");
 
-// Selecting Value Labels
 
+// Dark Mode State 
 let darkMode = true;
+
 
 // Selecting Containers 
 const main = document.querySelector("main");
@@ -467,14 +468,20 @@ const modeSwitch = function(){
     
     if(darkMode) {
         btnModeSwitch.querySelector("span").innerHTML = "dark_mode";
+        document.querySelector(".openweather-logo").src = "Assets/openweather-logo-black.png"
+        searchField.classList.add("search-field-light");
         
     }
 
     else {
         btnModeSwitch.querySelector("span").innerHTML = "light_mode";
+        document.querySelector(".openweather-logo").src = "Assets/openweather-logo.png"
+        searchField.classList.remove("search-field-light");
+        
     }
     darkMode = !darkMode;
 }
+
 
 btnModeSwitch.addEventListener("click" , modeSwitch);
 
