@@ -22,7 +22,9 @@
     --white-alpha-4: rgba(255, 255, 255, 0.04);
 
     --black-alpha-20: rgba(0, 0,0 , 0.3);
-    --accents-color: #eff780;
+    --icon-hover: rgba(255, 255, 255, 0.1);
+    --accents-color: #cc7efa;
+    --ripple-effect: rgba(255, 255, 255, 0.7);
 }
 
 .light-mode 
@@ -37,8 +39,10 @@
     --white-alpha-8:  rgba(0, 0, 0, 0.048);
     --black-alpha-20: #ededed;
 
+    --icon-hover: rgba(0, 0, 0, 0.1);
     --search-border: rgba(0, 0, 0, 0.048);
-    --accents-color: #7f51ff;
+    --accents-color: #cc7efa;
+    --ripple-effect: rgba(0, 0, 0, 0.3);
 }
 
 .search-field-light
@@ -123,10 +127,6 @@ body
     place-items: center;
 }
 
-.icon-btn:hover , .mode-btn:hover
-{
-    background-color: var(--white-alpha-10);
-}
 
 .btn-primary
 {
@@ -284,11 +284,7 @@ body
     
 }
 
-.hover-effect:hover
-{
-    background-color: var(--white-alpha-8) ;
-    transition: background-color ease-in .1s;
-}
+
 
 .search-view .view-list
 {
@@ -759,9 +755,54 @@ article.container::before
 
 /* Media Queries */
 
+/* Smaller Than 768px  */
+@media (max-width: 767px){
+
+    .view-item
+    {
+        overflow: hidden;
+    }
+    .ripple{
+        position: relative;
+        overflow: hidden;
+        outline: none;
+    }
+
+    .ripple::after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: var(--ripple-effect);
+        display: block;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: scale(0);
+        opacity: 1;
+        transition: transform 0.4s, opacity 1s;
+    }
+
+    .ripple:active::after {
+        transform: scale(10);
+        opacity: 0;
+        transition: transform 0.4s, opacity 0.8s;
+    }
+    
+}
+
 /** Larger Than 768px **/
 
 @media (min-width: 768px) {
+
+    .hover-effect:hover
+    {
+        background-color: var(--white-alpha-8) ;
+        transition: background-color ease-in .1s;
+    }
+    .icon-btn:hover , .mode-btn:hover
+    {
+        background-color:  var(--icon-hover);
+    }
 
     .btn-primary
     {
@@ -779,7 +820,7 @@ article.container::before
 
     .card-lg 
     {
-        box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 
     .slider-container .card-sm

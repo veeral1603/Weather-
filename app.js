@@ -112,7 +112,7 @@ searchField.addEventListener("input" , function(){
 
                 for (const {name , lat , lon, country, state} of locations){
                     const searchItem = document.createElement("li");
-                    searchItem.classList.add("view-item", "hover-effect");
+                    searchItem.classList.add("view-item", "hover-effect" , "ripple");
 
                     const searchItemMarkup = `<span class="material-symbols-outlined ">location_on</span>
 
@@ -486,8 +486,25 @@ const modeSwitch = function(){
 btnModeSwitch.addEventListener("click" , modeSwitch);
 
 
+// Ripple Effect 
+document.querySelectorAll('.ripple').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
+        const ripple = document.createElement('span');
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        ripple.classList.add('ripple-effect');
 
+        button.appendChild(ripple);
+
+        setTimeout(() => {
+            ripple.remove();
+        }, 1000);
+    });
+});
 
 
 
