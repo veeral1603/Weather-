@@ -37,6 +37,7 @@
     --secondary-values-color: rgb(20, 20, 20);
     --primary-icons-color: #333;
     --white-alpha-8:  rgba(0, 0, 0, 0.048);
+    --white-alpha-10: rgba(0, 0, 0, 0.1);
     --black-alpha-20: #ededed;
 
     --icon-hover: rgba(0, 0, 0, 0.1);
