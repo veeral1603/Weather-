@@ -1,1 +1,1 @@
-WeatherSome - Your Personalized Weather App
+#WeatherSome - Your Personalized Weather App
