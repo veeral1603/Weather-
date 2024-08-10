@@ -108,9 +108,7 @@ body
     
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-}
+
 
 .container
 {
@@ -792,9 +790,7 @@ article.container::before
 /* Smaller Than 768px  */
 @media (max-width: 767px){
 
-::-webkit-scrollbar {
-    width: 10px;
-}  
+  
    .view-item
     {
         overflow: hidden;
@@ -831,6 +827,9 @@ article.container::before
 
 @media (min-width: 768px) {
 
+    ::-webkit-scrollbar {
+       width: 10px;
+    }
     .hover-effect:hover
     {
         background-color: var(--white-alpha-8) ;
