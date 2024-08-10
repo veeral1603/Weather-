@@ -523,3 +523,4 @@ export const error404 = function(){
     errorContainer.style.display = "flex";
 }
 
+
